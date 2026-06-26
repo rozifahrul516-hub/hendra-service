@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hendra Service - Elektronik</title>
+    <style>
+        /* CSS untuk tampilan dan efek Neon Biru Dongker */
+        :root {
+            --dark-navy: #020211;
+            --neon-blue: #0055ff;
+            --neon-light: #4da6ff;
+            --text-light: #e0f0ff;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 0; 
+            background-color: var(--dark-navy);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 10, 40, 0.6);
+            border-radius: 20px;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue), inset 0 0 20px var(--neon-blue);
+            max-width: 600px;
+            width: 90%;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 0 30px var(--neon-light), inset 0 0 30px var(--neon-blue);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 
+                0 0 5px var(--neon-blue),
+                0 0 10px var(--neon-blue),
+                0 0 20px var(--neon-light);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            color: #aaccff;
+            min-height: 25px;
+        }
+
+        /* Styling Daftar Harga - Format Tabel Presisi */
+        .price-list {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(77, 166, 255, 0.3);
+            overflow-x: auto; /* Agar tabel tidak rusak di layar sangat kecil */
+        }
+
+        .price-list h2 {
+            font-size: 1.2rem;
+            color: var(--neon-light);
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px var(--neon-blue);
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            padding: 12px 10px;
+            color: var(--neon-light);
+            border-bottom: 2px solid var(--neon-blue);
+            font-size: 1rem;
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        th:last-child {
+            text-align: right;
+        }
+
+        td {
+            padding: 12px 10px;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed rgba(77, 166, 255, 0.2);
+            color: var(--text-light);
+        }
+
+        td.price-col {
+            text-align: right;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(0, 85, 255, 0.15); /* Efek sorot neon saat disentuh mouse */
+        }
+
+        /* Styling Form Pilihan */
+        .form-group {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--neon-light);
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(0, 5, 20, 0.8);
+            color: #ffffff;
+            border: 1px solid var(--neon-blue);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 85, 255, 0.2);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        select:focus {
+            border-color: var(--neon-light);
+            box-shadow: 0 0 15px var(--neon-light);
+        }
+
+        option {
+            background-color: var(--dark-navy);
+            color: #fff;
+        }
+
+        /* Tombol WhatsApp */
+        .wa-button {
+            display: inline-block;
+            background-color: transparent;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            border: 2px solid var(--neon-light);
+            box-shadow: 0 0 15px var(--neon-blue);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 80%;
+        }
+
+        .wa-button:hover {
+            background-color: var(--neon-blue);
+            color: #ffffff;
+            box-shadow: 0 0 20px var(--neon-light), 0 0 40px var(--neon-blue);
+            border-color: #ffffff;
+        }
+
+        /* Kursor berkedip */
+        .typing-effect::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hendra Service</h1>
+        <div id="deskripsi" class="subtitle typing-effect"></div>
+        
+        <!-- Daftar Harga Presisi -->
+        <div class="price-list">
+            <h2>Estimasi Harga Layanan</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Jenis Layanan</th>
+                        <th>Estimasi Harga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pengecekan / Konsultasi</td>
+                        <td class="price-col">Gratis / Rp 50.000</td>
+                    </tr>
+                    <tr>
+                        <td>Ganti Baterai HP</td>
+                        <td class="price-col">Mulai Rp 100.000</td>
+                    </tr>
+                    <tr>
+                        <td>Ganti LCD HP</td>
+                        <td class="price-col">Mulai Rp 150.000</td>
+                    </tr>
+                    <tr>
+                        <td>Install Ulang (Windows/Mac)</td>
+                        <td class="price-col">Rp 100.000</td>
+                    </tr>
+                    <tr>
+                        <td>Mati Total (HP/Laptop)</td>
+                        <td class="price-col">Cek Kerusakan Dulu</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="font-size: 0.8rem; color: #88aadd; margin-top: 15px; font-style: italic; text-align: center;">
+                *Harga dapat berubah tergantung merk dan tingkat kerusakan.
+            </div>
+        </div>
+
+        <!-- Opsi Pilihan Layanan -->
+        <div class="form-group">
+            <label for="pilihanLayanan">Pilih Layanan yang Anda Butuhkan:</label>
+            <select id="pilihanLayanan">
+                <option value="Konsultasi Kerusakan">Konsultasi Kerusakan</option>
+                <option value="Ganti LCD">Ganti LCD</option>
+                <option value="Ganti Baterai">Ganti Baterai</option>
+                <option value="Install Ulang Software / OS">Install Ulang Software / OS</option>
+                <option value="Service Mati Total">Service Mati Total</option>
+                <option value="Service Komponen Lainnya">Lainnya...</option>
+            </select>
+        </div>
+        
+        <!-- Tombol WhatsApp -->
+        <button class="wa-button" onclick="kirimKeWhatsApp()">
+            Kirim Pesan ke WhatsApp
+        </button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Efek mengetik (Typing Effect)
+        const text = "Spesialis Perbaikan HP, Komputer, dan Perangkat Elektronik Anda.";
+        const speed = 40; 
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("deskripsi").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            } else {
+                document.getElementById("deskripsi").classList.remove("typing-effect");
+            }
+        }
+
+        window.onload = typeWriter;
+
+        // Fungsi untuk mengambil nilai dari form dan membuka WhatsApp
+        function kirimKeWhatsApp() {
+            const nomorWA = "6287739872979";
+            const layananDipilih = document.getElementById("pilihanLayanan").value;
+            const pesan = `Halo Hendra Service, saya ingin menggunakan layanan: *${layananDipilih}*. Bisa minta informasi lebih lanjut?`;
+            const pesanDiencode = encodeURIComponent(pesan);
+            const linkWA = `https://wa.me/${nomorWA}?text=${pesanDiencode}`;
+            window.open(linkWA, '_blank');
+        }
+    </script>
+
+</body>
+</html>
