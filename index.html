@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hendra Computer</title>
+<style>
+:root{--dark:#020211;--blue:#0055ff;--light:#4da6ff;--text:#e0f0ff}
+body{margin:0;padding:40px;background:var(--dark);color:var(--text);font-family:Segoe UI,sans-serif;display:flex;justify-content:center}
+.container{max-width:700px;width:100%;background:rgba(0,10,40,.6);padding:40px;border-radius:20px;border:2px solid var(--blue);box-shadow:0 0 20px var(--blue)}
+h1{text-align:center;color:#fff;text-shadow:0 0 15px var(--light)}
+.subtitle{text-align:center;color:#aac;margin-bottom:25px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px;border-bottom:1px solid #335}
+th{text-align:left;color:var(--light)}
+td:last-child,th:last-child{text-align:right}
+select,button{width:100%;padding:14px;margin-top:20px;border-radius:8px}
+select{background:#07122c;color:#fff;border:1px solid var(--blue)}
+button{background:transparent;color:#fff;border:2px solid var(--light);cursor:pointer}
+button:hover{background:var(--blue)}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Hendra Computer</h1>
+<div id="deskripsi" class="subtitle"></div>
+<h2>Daftar Layanan & Estimasi Biaya</h2>
+<table>
+<tr><th>Layanan</th><th>Harga</th></tr>
+<tr><td>Konsultasi / Pengecekan</td><td>Gratis / Rp50.000</td></tr>
+<tr><td>Install Ulang Windows</td><td>Rp100.000</td></tr>
+<tr><td>Upgrade SSD</td><td>Mulai Rp50.000</td></tr>
+<tr><td>Upgrade RAM</td><td>Mulai Rp50.000</td></tr>
+<tr><td>Cleaning Laptop</td><td>Mulai Rp100.000</td></tr>
+<tr><td>Perbaikan Hardware Laptop / PC</td><td>Cek Kerusakan Dulu</td></tr>
+<tr><td>Rakit PC</td><td>Hubungi Admin</td></tr>
+</table>
+<p><small>*Harga dapat berubah sesuai kondisi perangkat.</small></p>
+<select id="pilihanLayanan">
+<option>Konsultasi</option>
+<option>Install Ulang Windows</option>
+<option>Upgrade SSD</option>
+<option>Upgrade RAM</option>
+<option>Cleaning Laptop</option>
+<option>Perbaikan Hardware Laptop</option>
+<option>Perbaikan Komputer</option>
+<option>Rakit PC</option>
+<option>Lainnya</option>
+</select>
+<button onclick="kirim()">Kirim Pesan ke WhatsApp</button>
+</div>
+<script>
+const text="Spesialis Perbaikan Komputer, Laptop, Upgrade Hardware, Install Windows, dan Maintenance.";
+let i=0;
+(function t(){if(i<text.length){deskripsi.innerHTML+=text.charAt(i++);setTimeout(t,40)}})();
+function kirim(){
+const no="6287739872979";
+const layanan=document.getElementById("pilihanLayanan").value;
+const msg=`Halo Hendra Computer,
+
+Saya ingin menggunakan layanan *${layanan}*. Mohon informasi lebih lanjut.`;
+window.open(`https://wa.me/${no}?text=${encodeURIComponent(msg)}`,"_blank");
+}
+</script>
+</body>
+</html>
